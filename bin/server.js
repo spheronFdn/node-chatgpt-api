@@ -156,6 +156,10 @@ server.post('/conversation', async (request, reply) => {
     return reply.code(code).send({ error: message });
 });
 
+server.get('/healthCheck', async (request, reply) => {
+    reply.code(200).send({ status: 'alive' });
+});
+
 server.listen({
     port: settings.apiOptions?.port || settings.port || 3000,
     host: settings.apiOptions?.host || 'localhost',
